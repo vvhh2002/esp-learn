@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.5)
-project(idf_as_lib C)
+project(idf_as_lib CXX)
 
 # The source file main.c contains app_main() definition
-add_executable(${CMAKE_PROJECT_NAME}.elf main.c)
+add_executable(${CMAKE_PROJECT_NAME}.elf custom.cpp)
 
 # Provides idf_import_components() and idf_link_components()
 include($ENV{IDF_PATH}/tools/cmake/idf_functions.cmake)
