@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
-project(idf_as_lib CXX)
+set(CMAKE_CXX_STANDARD 11)
+project(idf_as_lib CXX C)
 
 # The source file main.c contains app_main() definition
 add_executable(${CMAKE_PROJECT_NAME}.elf custom.cpp)
