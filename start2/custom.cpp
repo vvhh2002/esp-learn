@@ -10,6 +10,8 @@
 #include "freertos/queue.h"
 #include "esp_system.h"
 #include "esp_spi_flash.h"
+#include "test.h"
+#include <jsmn.h>
 int queueSize = 10;
 QueueHandle_t queue;
 unsigned long startProducing, endProducing, startConsuming, endConsuming, producingTime, consumingTime;
@@ -48,7 +50,10 @@ void consumerTask( void * parameter)
 void setup() {
 
     queue = xQueueCreate( queueSize, sizeof( int ) );
+    jsmn_parser  p;
+    jsmn_init(&p);
 
+    test();
     if(queue == nullptr){
         printf("Error creating the queue");
     }
