@@ -66,7 +66,8 @@
 #define SCO_DEMO_MODE_MICROPHONE 5
 
 // SCO demo configuration
-#define SCO_DEMO_MODE               SCO_DEMO_MODE_MICROPHONE
+//#define SCO_DEMO_MODE               SCO_DEMO_MODE_MICROPHONE
+#define SCO_DEMO_MODE               SCO_DEMO_MODE_COUNTER
 
 // number of sco packets until 'report' on console
 #define SCO_REPORT_PERIOD           100

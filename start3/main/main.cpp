@@ -10,8 +10,6 @@ extern "C" {
 #include "esp_system.h"
 #include "esp_spi_flash.h"
 #include "esp_log.h"
-
-
 #include "btstack_event.h"
 #include "btstack_memory.h"
 #include "btstack_run_loop.h"
@@ -27,6 +25,8 @@ extern "C" {
 #include "esp_bt.h"
 #include "btstack_debug.h"
 #include "btstack_audio.h"
+#include "esp_wifi.h"
+#include "esp_event_loop.h"
 }
 
 
@@ -301,6 +301,22 @@ extern "C" int btstack_main(int argc, const char * argv[]);
 extern "C" void app_main()
 {
     ESP_LOGI(TAG,"start !");
+    //tcpip_adapter_init();
+///*
+// * for mesh
+// * stop DHCP server on softAP interface by default
+// * stop DHCP client on station interface by default
+// */
+//    ESP_ERROR_CHECK(tcpip_adapter_dhcps_stop(TCPIP_ADAPTER_IF_AP));
+//    ESP_ERROR_CHECK(tcpip_adapter_dhcpc_stop(TCPIP_ADAPTER_IF_STA));
+///* do not specify system event callback, use NULL instead. */
+//    ESP_ERROR_CHECK(esp_event_loop_init(NULL, NULL));
+////
+//    wifi_init_config_t config = WIFI_INIT_CONFIG_DEFAULT();
+//    ESP_ERROR_CHECK(esp_wifi_init(&config));
+//    ESP_ERROR_CHECK(esp_wifi_set_storage(WIFI_STORAGE_FLASH));
+//    ESP_ERROR_CHECK(esp_wifi_start());
+
 
     ESP_LOGI(TAG,"BTstack: setup\n");
 
@@ -313,7 +329,6 @@ extern "C" void app_main()
 
     // init HCI
     hci_init(transport_get_instance(), NULL);
-
 
     // setup TLV ESP32 implementation and register with system
     const btstack_tlv_t * btstack_tlv_impl = btstack_tlv_esp32_get_instance();

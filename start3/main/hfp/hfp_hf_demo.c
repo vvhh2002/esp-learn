@@ -556,6 +556,12 @@ static void packet_handler(uint8_t packet_type, uint16_t channel, uint8_t * even
                             printf("  - type      : %d \n", hfp_subevent_enhanced_call_status_get_bnip_type(event));
                             printf("  - number    : %s \n", hfp_subevent_enhanced_call_status_get_bnip_number(event));
                             break;
+                        case HFP_SUBEVENT_SUBSCRIBER_NUMBER_INFORMATION:
+                            printf("subscriber number information:\n");
+                            printf("  - bnip number: %s \n",hfp_subevent_subscriber_number_information_get_bnip_number(event));
+                            printf("  - bnip type: %d \n",hfp_subevent_subscriber_number_information_get_bnip_type(event));
+                            printf("  - bnip status: %d \n",hfp_subevent_subscriber_number_information_get_status(event));
+                            break;
                         default:
                             printf("event not handled %u\n", event[2]);
                             break;
